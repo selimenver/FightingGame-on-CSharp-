@@ -10,7 +10,7 @@ class Program
 
         while (playerHP > 0 && botHP > 0)
         {
-            Console.WriteLine($"Your hp: {playerHP}, Enemy hp; {botHP}");
+            Console.WriteLine($"Your hp: {playerHP}, Enemy hp: {botHP}");
             Console.WriteLine("1 to attack");
             Console.WriteLine("2 to defend");
             Console.WriteLine("3 to flee");
@@ -37,7 +37,6 @@ class Program
             else if (choice == '2')
             {
                 Console.Clear();
-
                 int botchoice = rng.Next(1, 3);
                 if (botchoice == 1)
                 {
@@ -62,13 +61,25 @@ class Program
             {
                 Console.Clear();
                 Console.WriteLine("\nYou ran away. What a coward, your enemy says.");
-                break;
+                return;
             }
             else
             {
                 Console.Clear();
                 Console.WriteLine("\nSelect a valid option.");
             }
+        }
+        if (playerHP <= 0 && botHP <= 0)
+        {
+            Console.WriteLine("It's a draw! You both died at the same time.");
+        }
+        else if (playerHP <= 0)
+        {
+            Console.WriteLine("You died. Game over.");
+        }
+        else if (botHP <= 0)
+        {
+            Console.WriteLine("You defeated the enemy! Goodjob.");
         }
     }
 }
